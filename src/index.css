@@ -4,8 +4,8 @@
   --tan-1: #FBF9F6;
   --tan-2: #E7E2DD;
   --tan-3: #E2D9D1;
-  --tan-4: #D3C1AE;
-  --blue: #c28eda;
+  --tan-4: #757f9a;
+  --blue: #757f9a;
   --text-light: #968c84;
   --text-dark: #615954;
 }
@@ -22,7 +22,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /* background-color: var(--tan-4); */
-  background: linear-gradient(to right, #dae2f8, #d6a4a4);
+  background: linear-gradient(to right, #757f9a, #d7dde8);
   padding: 2vmin;
   height: 100vh;
 }
