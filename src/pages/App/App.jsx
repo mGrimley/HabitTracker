@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Routes, Route, Link } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import './App.css';
 import { getUser } from '../../utilities/users-service'
 import * as userService from '../../utilities/users-service'
@@ -18,7 +18,11 @@ export default function App() {
     <main className="App">
       { user ? 
         <>
-          <Link to="" onClick={handleLogOut}>Log Out</Link>
+          <h1>Habbit Tracker</h1>
+          <p>Welcome, {user.name}</p>
+          
+
+          <button onClick={handleLogOut}>Log Out</button>
         </>
         :
         <AuthPage setUser={setUser}/>
