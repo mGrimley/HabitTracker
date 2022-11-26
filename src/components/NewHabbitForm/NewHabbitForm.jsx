@@ -8,5 +8,16 @@ export default function NewHabbitForm({ addHabbit }) {
         points: 0,
         user: null,
     });
-    
+
+    function handleNewHabbit(evt) {
+        evt.preventDefault();
+        addHabbit(newHabbit);
+        setNewHabbit({
+            description: '',
+            frequency: 0,
+            completed: false,
+            points: 0,
+            user: null,
+        });
+    }
 }
