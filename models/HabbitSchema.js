@@ -1,10 +1,10 @@
 const Schema = require('mongoose').Schema;
 
 const habbitSchema = new Schema({
-    descrption: String,
+    descrption: {type: String, required: true},
     frequency: {type: Number, default: 1, min: 0},
-    completed: Boolean,
-    points: Number,
+    completed: {type: Boolean, default: false},
+    points: {type: Number, default: 0, min: 0},
     user: {type: Schema.Types.ObjectId, ref: 'User', required: true},
 }, {
     timestamps: true,
