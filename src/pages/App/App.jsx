@@ -4,7 +4,7 @@ import './App.css';
 import { getUser } from '../../utilities/users-service'
 import * as userService from '../../utilities/users-service'
 import AuthPage from '../AuthPage/AuthPage'
-import HabitListPage from '../HabitListPage/HabbitListPage'
+import HabitListPage from '../HabitListPage/HabitListPage'
 
 export default function App() {
   const [user, setUser] = useState(getUser())
@@ -27,8 +27,6 @@ export default function App() {
         :
         <AuthPage setUser={setUser}/>
       }
-
-      
     </main>
   );
 }

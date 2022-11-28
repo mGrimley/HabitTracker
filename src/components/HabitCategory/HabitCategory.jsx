@@ -1,4 +1,4 @@
-import HabbitItem from "../HabbitItem/HabbitItem";
+import HabbitItem from "../HabitItem/HabitItem";
 
 export default function HabbitCategory({ habbits }) {
     return (
