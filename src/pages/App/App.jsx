@@ -18,7 +18,7 @@ export default function App() {
     <main className="App">
       { user ? 
         <>
-          <h1>Habbit Tracker</h1>
+          <h1>Habit Tracker</h1>
           <p>Welcome, {user.name}</p>
           <HabitListPage user={user} setUser={setUser} />
 
