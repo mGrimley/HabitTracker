@@ -20,7 +20,7 @@ export default function App() {
         <>
           <h1>Habit Tracker</h1>
           <p>Welcome, {user.name}</p>
-          <HabitListPage user={user} setUser={setUser} />
+          <HabitListPage />
 
           <button onClick={handleLogOut}>Log Out</button>
         </>

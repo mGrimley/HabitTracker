@@ -2,6 +2,7 @@ import HabitItem from "../../components/HabitItem/HabitItem";
 import NewHabitForm from "../../components/NewHabitForm/NewHabitForm";
 
 export default function HabitListPage({ habits }) {
+
   return (
     <main>
       <h1>HabitListPage</h1>
