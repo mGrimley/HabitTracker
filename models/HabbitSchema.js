@@ -4,7 +4,6 @@ const habbitSchema = new Schema({
     descrption: {type: String, required: true},
     frequency: {type: Number, default: 1, min: 0},
     completed: {type: Boolean, default: false},
-    points: {type: Number, default: 0, min: 0},
     user: {type: Schema.Types.ObjectId, ref: 'User', required: true},
 }, {
     timestamps: true,

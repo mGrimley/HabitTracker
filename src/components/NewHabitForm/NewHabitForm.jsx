@@ -5,7 +5,6 @@ export default function NewHabitForm({ addHabit }) {
         description: '',
         frequency: 0,
         completed: false,
-        points: 0,
         user: null,
     });
 
@@ -16,7 +15,6 @@ export default function NewHabitForm({ addHabit }) {
             description: '',
             frequency: 0,
             completed: false,
-            points: 0,
             user: null,
         });
     }
@@ -43,14 +41,6 @@ export default function NewHabitForm({ addHabit }) {
                 type="number"
                 name="frequency"
                 value={newHabit.frequency}
-                onChange={handleChange}
-            />
-
-            <label>Points</label>
-            <input
-                type="number"
-                name="points"
-                value={newHabit.points}
                 onChange={handleChange}
             />
 

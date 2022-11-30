@@ -1,7 +1,16 @@
+import { useState, useEffect, useRef } from 'react';
 import HabitItem from "../../components/HabitItem/HabitItem";
 import NewHabitForm from "../../components/NewHabitForm/NewHabitForm";
 
 export default function HabitListPage({ habits }) {
+    const [habits, setHabits] = useState([]);
+    const [newHabit, setNewHabit] = useState({
+        description: '',
+        frequency: 0,
+        completed: false,
+        user: null,
+    });
+  const categoriesRef = useRef([]);
 
   return (
     <main>

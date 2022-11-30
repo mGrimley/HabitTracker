@@ -6,7 +6,6 @@ export default function HabbitItem({ habbit }) {
             <ul>
                 <li><input type="checkbox" checked={habbit.completed}/></li>
                 <li>{habbit.description}</li>
-                <li>{habbit.points}</li>
             </ul>
         </li>
     );
