@@ -6,6 +6,7 @@ export default function HabitListPage({ habits }) {
   return (
     <main>
       <h1>HabitListPage</h1>
+      <hr />
       {/* If there are no habits, show a message, otherwise show all habits */}
       {habits ? (
         <ul>
@@ -16,6 +17,7 @@ export default function HabitListPage({ habits }) {
       ) : (
         <h3>No Habits Yet</h3>
       )}
+      <hr />
       <NewHabitForm />
     </main>
   );
