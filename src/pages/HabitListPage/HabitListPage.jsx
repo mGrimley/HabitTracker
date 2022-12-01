@@ -2,18 +2,12 @@ import { useState, useEffect, useRef } from 'react';
 import HabitItem from "../../components/HabitItem/HabitItem";
 import NewHabitForm from "../../components/NewHabitForm/NewHabitForm";
 
-export default function HabitListPage({ habits }) {
-    const [habits, setHabits] = useState([]);
-    const [newHabit, setNewHabit] = useState({
-        description: '',
-        frequency: 0,
-        completed: false,
-        user: null,
-    });
+export default function HabitListPage({ user }) {
+  const [habits, setHabits] = useState([]);
   const categoriesRef = useRef([]);
 
   return (
-    <main>
+    <div>
       <h1>HabitListPage</h1>
       <hr />
       {/* If there are no habits, show a message, otherwise show all habits */}
@@ -27,7 +21,7 @@ export default function HabitListPage({ habits }) {
         <h3>No Habits Yet</h3>
       )}
       <hr />
-      <NewHabitForm />
-    </main>
+      <NewHabitForm user={user}/>
+    </div>
   );
 }
