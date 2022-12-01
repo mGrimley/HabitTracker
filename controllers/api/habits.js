@@ -1,4 +1,4 @@
-const Habit = require('../../models/habit');
+const Habit = require('../../models/Habit');
 
 module.exports = {
     index,
@@ -10,7 +10,7 @@ module.exports = {
 async function index(req, res) {
     try {
         const habits = await Habit.find({user: req.user._id});
-        console.log(habits);
+        // console.log(habits);
         res.status(200).json(habits);
     } catch (err) {
         res.status(400).json(err);
@@ -19,12 +19,12 @@ async function index(req, res) {
 
 async function create(req, res) {
     try {
-        // req.body.user = req.user._id;
-        console.log(req.body);
-        const habit = await Habit.create(req.body);
-        habit.save();
+        console.log('req.body:', req.body);
+        const habit = await Habit.create({...req.body, user: req.user});
+        // console.log('habit:', habit);
         res.status(201).json(habit);
     } catch (err) {
+        console.log(err)
         res.status(400).json(err);
     }
 }

@@ -11,7 +11,7 @@ export default function HabitListPage({ user }) {
       <h1>HabitListPage</h1>
       <hr />
       {/* If there are no habits, show a message, otherwise show all habits */}
-      {habits ? (
+      {habits.length ? (
         <ul>
           {habits.map((habit) => (
             <HabitItem habit={habit} key={habit._id} />

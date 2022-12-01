@@ -1,7 +1,7 @@
 const Schema = require('mongoose').Schema;
 
-const habbitSchema = new Schema({
-    descrption: {type: String, required: true},
+const habitSchema = new Schema({
+    description: {type: String, required: true},
     frequency: {type: Number, default: 1, min: 0},
     completed: {type: Boolean, default: false},
     user: {type: Schema.Types.ObjectId, ref: 'User', required: true},
@@ -10,7 +10,7 @@ const habbitSchema = new Schema({
     toJSON: { virtuals: true },
 });
 
-habbitSchema.virtual('category').get(function() {
+habitSchema.virtual('category').get(function() {
     if (this.frequency === 0) {
         return 'To-Do'
     } else if (this.frequency === 1) {
@@ -28,4 +28,4 @@ habbitSchema.virtual('category').get(function() {
     }
 })
 
-module.exports = habbitSchema;
+module.exports = habitSchema;
