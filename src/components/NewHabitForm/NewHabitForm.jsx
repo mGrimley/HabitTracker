@@ -13,16 +13,7 @@ export default function NewHabitForm({ user, habits, setHabits }) {
         evt.preventDefault()
         try {
             const newHabitData = await habitsAPI.create(newHabit)
-            // Add the new habit to it's position according to its frequency
-            const newHabits = [...habits]
-            for(let i = 0; i < newHabits.length; i++) {
-                if(newHabits[i].frequency > newHabitData.frequency) {
-                    newHabits.splice(i, 0, newHabitData)
-                    break
-                }
-            }
-            setHabits(newHabits)
-            // setHabits([...habits, newHabitData])
+            setHabits([...habits, newHabitData])
             setNewHabit({
                 description: '',
                 frequency: 1,
