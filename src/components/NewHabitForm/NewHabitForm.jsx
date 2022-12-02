@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import * as habitsAPI from '../../utilities/habits-api';
 
-export default function NewHabitForm({ user }) {
+export default function NewHabitForm({ user, habits, setHabits }) {
     const [newHabit, setNewHabit] = useState({
         description: '',
         frequency: 1,
@@ -10,21 +10,10 @@ export default function NewHabitForm({ user }) {
     });
 
     async function handleNewHabit(evt) {
-        // evt.preventDefault();
-        // // add the habit to the database
-        // // clear the form
-        // console.log('new habit:', newHabit);
-        // // const newHabitData = await habitsAPI.create(newHabit);
-
-        // setNewHabit({
-        //     description: '',
-        //     frequency: 1,
-        //     completed: false,
-        //     user: null,
-        // });
         evt.preventDefault()
         try {
             const newHabitData = await habitsAPI.create(newHabit)
+            setHabits([...habits, newHabitData])
             setNewHabit({
                 description: '',
                 frequency: 1,

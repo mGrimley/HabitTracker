@@ -9,7 +9,7 @@ module.exports = {
 
 async function index(req, res) {
     try {
-        const habits = await Habit.find({user: req.user._id});
+        const habits = await Habit.find({user: req.user._id}).sort({frequency: 1});
         // console.log(habits);
         res.status(200).json(habits);
     } catch (err) {
