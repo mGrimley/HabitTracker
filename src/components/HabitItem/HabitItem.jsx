@@ -5,7 +5,8 @@ export default function HabbitItem({ habit, habits, setHabits }) {
     const handleDeleteHabit = async(evt) => {
         console.log(habit.id);
         await habitAPI.deleteOne(habit.id);
-        // setHabits(habits.filter(habit => habit._id !== habit.id));
+        const newHabits = habits.filter((h) => h.id !== habit.id);
+        setHabits(newHabits);
     }
 
     return (
