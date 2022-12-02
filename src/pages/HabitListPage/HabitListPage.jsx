@@ -1,28 +1,17 @@
-import { useState, useEffect, useRef } from 'react';
-import { useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import * as habitAPI from '../../utilities/habits-api';
 import HabitItem from "../../components/HabitItem/HabitItem";
 import NewHabitForm from "../../components/NewHabitForm/NewHabitForm";
 
 export default function HabitListPage({ user }) {
   const [habits, setHabits] = useState([]);
-  // const categoryRef = useRef([]);
-  let { id } = useParams();
 
   useEffect(function () {
     (async function () {
       const habits = await habitAPI.getAll();
-      // categoryRef.current = [...new Set(habits.map(habit => habit.category))];
       setHabits(habits);
     })();
   }, []);
-
-  // const handleDeleteHabit = async(evt) => {
-  //   console.log(id);
-  //   await habitAPI.deleteOne(id);
-  //   setHabits(habits.filter(habit => habit._id !== id));
-  // }
-
 
   return (
     <div>
