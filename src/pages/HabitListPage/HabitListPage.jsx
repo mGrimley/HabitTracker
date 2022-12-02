@@ -5,6 +5,12 @@ import NewHabitForm from "../../components/NewHabitForm/NewHabitForm";
 
 export default function HabitListPage({ user }) {
   const [habits, setHabits] = useState([]);
+  const [newHabit, setNewHabit] = useState({
+    description: '',
+    frequency: 1,
+    completed: false,
+    user: null,
+  });
 
   useEffect(function () {
     (async function () {
@@ -21,14 +27,28 @@ export default function HabitListPage({ user }) {
       {habits.length ? (
         <ul>
           {habits.map((habit) => (
-            <HabitItem habit={habit} key={habit._id} habits={habits} setHabits={setHabits} />
+            <HabitItem 
+              habit={habit}
+              key={habit._id}
+              habits={habits}
+              setHabits={setHabits}
+              user={user}
+              newHabit={newHabit}
+              setNewHabit={setNewHabit}
+            />
           ))}
         </ul>
       ) : (
         <h3>No habits yet, create one below</h3>
       )}
       <hr />
-      <NewHabitForm user={user} habits={habits} setHabits={setHabits}/>
+      <NewHabitForm
+        user={user}
+        habits={habits}
+        setHabits={setHabits}
+        newHabit={newHabit}
+        setNewHabit={setNewHabit}
+      />
     </div>
   );
 }
