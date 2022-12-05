@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import * as habitsAPI from '../../utilities/habits-api';
 
-export default function NewHabitForm({ user, habits, setHabits, newHabit, setNewHabit }) {
+export default function NewHabitForm({ user, habits, setHabits, newHabit, setNewHabit, setCategories }) {
     async function handleNewHabit(evt) {
         evt.preventDefault()
         try {
@@ -15,6 +15,7 @@ export default function NewHabitForm({ user, habits, setHabits, newHabit, setNew
                 }
             }
             setHabits(newHabits)
+            setCategories([...new Set(newHabits.map((habit) => habit.category))])
             setNewHabit({
                 description: '',
                 frequency: 1,

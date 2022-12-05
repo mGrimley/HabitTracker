@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import * as habitAPI from '../../utilities/habits-api';
 import HabitItem from "../../components/HabitItem/HabitItem";
 import NewHabitForm from "../../components/NewHabitForm/NewHabitForm";
@@ -11,11 +11,13 @@ export default function HabitListPage({ user }) {
     completed: false,
     user: null,
   });
+  const [categories, setCategories] = useState([]);
 
   useEffect(function () {
     (async function () {
       const habits = await habitAPI.getAll();
       setHabits(habits);
+      setCategories([...new Set(habits.map((habit) => habit.category))]);
     })();
   }, []);
 
@@ -26,16 +28,21 @@ export default function HabitListPage({ user }) {
       {/* If there are no habits, show a message, otherwise show all habits */}
       {habits.length ? (
         <ul>
-          {habits.map((habit) => (
-            <HabitItem 
-              habit={habit}
-              key={habit._id}
-              habits={habits}
-              setHabits={setHabits}
-              user={user}
-              newHabit={newHabit}
-              setNewHabit={setNewHabit}
-            />
+          {categories.map((category) => (
+            <li key={category}>
+              <h3>{category}</h3>
+              <ul>
+                {habits.filter((habit) => habit.category === category).map((habit) => (
+                    <HabitItem
+                      habit={habit}
+                      key={habit._id}
+                      habits={habits}
+                      setHabits={setHabits}
+                      setCategories={setCategories}
+                    />
+                ))}
+              </ul>
+            </li>
           ))}
         </ul>
       ) : (
@@ -48,6 +55,7 @@ export default function HabitListPage({ user }) {
         setHabits={setHabits}
         newHabit={newHabit}
         setNewHabit={setNewHabit}
+        setCategories={setCategories}
       />
     </div>
   );
