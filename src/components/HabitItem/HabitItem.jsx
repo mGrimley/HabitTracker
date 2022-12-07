@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 export default function HabbitItem({ habit, habits, setHabits, setCategories }) {
     const handleDeleteHabit = async(evt) => {
-        console.log(habit.id);
         await habitAPI.deleteOne(habit.id);
         const newHabits = habits.filter((h) => h.id !== habit.id);
         setHabits(newHabits);
@@ -12,6 +11,8 @@ export default function HabbitItem({ habit, habits, setHabits, setCategories }) 
 
     return (
         <li>
+            {console.log(habit.description, habit.completed)}
+            <span>{habit.completed ? '✅' : '❌'} </span>
             <span>[{habit.nextDueDateFormatted}] </span>
             <span>{habit.description}</span>
             <Link to={`/habits/${habit._id}`}><button>[Edit Symbol]</button></Link>

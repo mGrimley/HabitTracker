@@ -12,17 +12,21 @@ export default function HabitDetail({ user }) {
     // handle delete button click
 
     const [habit, setHabit] = useState(null);
+    const [completed, setCompleted] = useState(false);
     const { id } = useParams();
-
+    
     async function getHabit() {
         const habits = await habitAPI.getAll();
         const habit = habits.find((habit) => habit._id === id);
         setHabit(habit);
+        setCompleted(habit.completed);
     }
-
+    
     useEffect (function () {
         getHabit();
     }, [id]);
+    
+    
 
     async function handleUpdateHabit(evt) {
         evt.preventDefault();
@@ -32,51 +36,79 @@ export default function HabitDetail({ user }) {
 
     function handleDeleteHabit() {
         habitAPI.deleteOne(habit._id);
-        
     }
 
-    // function handleChange(evt) {
-    //     setHabit({
-    //         ...habit,
-    //         [evt.target.name]: evt.target.value,
-    //         user: user._id
-    //     });
-    // }
-
     function handleChange(evt) {
-        const newHabit = {...habit};
-        newHabit[evt.target.name] = evt.target.value;
-        setHabit(newHabit);
-        // setHabit({
-        //     ...habit,
-        //     [evt.target.name]: evt.target.value,
-        //     user: user._id
-        // });
+        setHabit({
+            ...habit,
+            [evt.target.name]: evt.target.value,
+            user: user._id
+        });
+        console.log(evt.target.name, evt.target.value)
+    }
+
+    function handleCheckboxChange(evt) {
+        // setCompleted(evt.target.checked);
+        setHabit({
+            ...habit,
+            [evt.target.name]: evt.target.checked,
+            user: user._id
+        });
+        console.log(evt.target.name, evt.target.checked)
     }
 
     return (
         <>
-        <div>
-            <h1>Habit Detail</h1>
-            <hr />
-            {habit ? (
-                <>
-                    <form>
-                        <label>Description</label>
-                        <input type="text" value={habit.description} onChange={handleChange} />
-                        <label>Frequency (Days)</label>
-                        <input type="number" value={habit.frequency} onChange={handleChange} />
-                        <label>Completed</label>
-                        <input type="checkbox" checked={habit.completed} onChange={handleChange} />
-                        <Link to='..'><button onClick={handleUpdateHabit}>[Update symbol]</button></Link>
-                        <Link to='..'><button onClick={handleDeleteHabit}>[Trash Can]</button></Link>
-                    </form>
-                </>
-            ) : (
-                <h3>Loading...</h3>
-            )}
-        </div>
-        <Link to='..'><button>Return</button></Link>
+            <div>
+                <h1>Habit Detail</h1>
+                <hr />
+                {habit ? (
+                    <>
+                        <form>
+                            <label>Description</label>
+                            <input
+                                autoComplete='off'
+                                type="text"
+                                name="description"
+                                value={habit.description}
+                                onChange={handleChange}
+                            />
+
+                            <label>Frequency (Days)</label>
+                            <input
+                                autoComplete='off'
+                                type="number"
+                                name="frequency"
+                                value={habit.frequency}
+                                onChange={handleChange}
+                            />
+
+                            <label>Start Date</label>
+                            <input
+                                autoComplete='off'
+                                type="date"
+                                name="startDate"
+                                value={habit.startDate}
+                                onChange={handleChange}
+                            />
+
+                            <label>Completed</label>
+                            <input
+                                autoComplete='off'
+                                type="checkbox"
+                                name="completed"
+                                value={habit.completed}
+                                onChange={handleCheckboxChange}
+                            />
+                            <Link to='..'><button onClick={handleUpdateHabit}>[Update symbol]</button></Link>
+                            <Link to='..'><button onClick={handleDeleteHabit}>[Trash Can]</button></Link>
+                        </form>
+                    </>
+                ) : (
+                    <h3>Loading...</h3>
+                )}
+            </div>
+            <Link to='..'><button>Return</button></Link>
         </>
     )
 }

@@ -40,8 +40,13 @@ async function deleteOne(req, res) {
 
 async function update(req, res) {
     try {
-        const habit = await Habit.findByIdAndUpdate(req.params.id, req.body, {new: true});
-        // await habit.save();
+        const habit = await Habit.findById(req.params.id);
+        // update the habit
+        habit.name = req.body.name;
+        habit.frequency = req.body.frequency;
+        habit.startDate = req.body.startDate;
+        habit.completed = req.body.completed;
+        habit.save();
         res.status(200).json(habit);
     } catch (err) {
         res.status(400).json(err);
