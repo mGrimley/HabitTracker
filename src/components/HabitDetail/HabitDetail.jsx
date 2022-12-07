@@ -3,6 +3,8 @@ import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import * as habitAPI from '../../utilities/habits-api';
 import { Link } from 'react-router-dom';
+import Icon from '@mui/material/Icon';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 export default function HabitDetail({ user }) {
     // get habit by id
@@ -56,7 +58,7 @@ export default function HabitDetail({ user }) {
 
     return (
         <>
-            <div>
+            <div className='HabitDetail'>
                 <h1>Habit Detail</h1>
                 <hr />
                 {habit ? (
@@ -97,15 +99,15 @@ export default function HabitDetail({ user }) {
                                 value={habit.completed}
                                 onChange={handleCheckboxChange}
                             />
-                            <Link to='..'><button onClick={handleUpdateHabit}>[Update symbol]</button></Link>
-                            <Link to='..'><button onClick={handleDeleteHabit}>[Trash Can]</button></Link>
+                            <Link to='..'><button onClick={handleUpdateHabit}><Icon>edit</Icon></button></Link>
+                            <Link to='..'><button onClick={handleDeleteHabit}><Icon>delete</Icon></button></Link>
                         </form>
                     </>
                 ) : (
                     <h3>Loading...</h3>
                 )}
             </div>
-            <Link to='..'><button>Return</button></Link>
+            <Link to='..'><button><ArrowBackIcon /></button></Link>
         </>
     )
 }

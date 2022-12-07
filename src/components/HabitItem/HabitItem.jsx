@@ -1,5 +1,6 @@
 import * as habitAPI from '../../utilities/habits-api';
 import { Link } from 'react-router-dom';
+import Icon from '@mui/material/Icon';
 
 export default function HabbitItem({ habit, habits, setHabits, setCategories }) {
     const handleDeleteHabit = async(evt) => {
@@ -11,12 +12,11 @@ export default function HabbitItem({ habit, habits, setHabits, setCategories }) 
 
     return (
         <li>
-            {console.log(habit.description, habit.completed)}
-            <span>{habit.completed ? '✅' : '❌'} </span>
+            <span>{habit.completed ? <Icon>check</Icon> : <Icon>close</Icon>} </span>
             <span>[{habit.nextDueDateFormatted}] </span>
-            <span>{habit.description}</span>
-            <Link to={`/habits/${habit._id}`}><button>[Edit Symbol]</button></Link>
-            <button onClick={() =>  handleDeleteHabit(habit._id)}>[Trash Can]</button>
+            <span>{habit.description} </span>
+            <Link to={`/habits/${habit._id}`}><button><Icon>edit</Icon></button></Link>
+            <button onClick={() =>  handleDeleteHabit(habit._id)}><Icon>delete</Icon></button>
         </li>
     );
 }

@@ -1,4 +1,5 @@
 import * as habitsAPI from '../../utilities/habits-api';
+import Icon from '@mui/material/Icon';
 
 export default function NewHabitForm({ user, habits, setHabits, newHabit, setNewHabit, setCategories }) {
     async function handleNewHabit(evt) {
@@ -64,7 +65,7 @@ export default function NewHabitForm({ user, habits, setHabits, newHabit, setNew
                 onChange={handleChange}
             />
 
-            <button type="submit">Add Habbit</button>
+            <button type="submit"><Icon>add</Icon></button>
         </form>
     );
 }
