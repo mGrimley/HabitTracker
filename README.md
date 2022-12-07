@@ -25,12 +25,13 @@ CSS stlying WILL change, but here's a sneak peak
 Log in Page
 <img src="https://i.imgur.com/CzzppFl.png">
 <br />
+<br />
 Habit List Page
 <img src="https://i.imgur.com/cl6dgkK.png">
 <br />
+<br />
 Habit Detail Page
 <img src="https://i.imgur.com/4DA2vJx.png">
-![Habit Detail Page](https://i.imgur.com/4DA2vJx.png)
 
 ##### WARNING
 A lil buggy at the moment. Habit descriptions and start dates are NOT editable, but the completion status IS editable. Refresh the page after you've added your first habit. Bugfixes incoming. 
