@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import './App.css';
 import Icon from '@mui/material/Icon';
@@ -15,6 +15,10 @@ export default function App() {
     userService.logOut()
     setUser(null)
   }
+
+  useEffect(() => {
+    document.title = "Habit Tracker"
+ }, []);
 
   return (
     <>
