@@ -46,17 +46,16 @@ export default function HabitDetail({ user }) {
             [evt.target.name]: evt.target.value,
             user: user._id
         });
-        console.log(evt.target.name, evt.target.value)
+        // console.log(evt.target.name, evt.target.value)
     }
 
     function handleCheckboxChange(evt) {
-        // setCompleted(evt.target.checked);
         setHabit({
             ...habit,
             [evt.target.name]: evt.target.checked,
             user: user._id
         });
-        console.log(evt.target.name, evt.target.checked)
+        // console.log(evt.target.name, evt.target.checked)
     }
 
     return (
@@ -102,7 +101,7 @@ export default function HabitDetail({ user }) {
                                 value={habit.completed}
                                 onChange={handleCheckboxChange}
                             />
-                            <Link to='..'><button onClick={handleUpdateHabit}><Icon>edit</Icon></button></Link>
+                            <Link to='..'><button onClick={handleUpdateHabit}><Icon>save</Icon></button></Link>
                             <Link to='..'><button onClick={handleDeleteHabit}><Icon>delete</Icon></button></Link>
                         </form>
                     </>

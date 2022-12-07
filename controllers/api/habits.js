@@ -10,9 +10,9 @@ module.exports = {
 async function index(req, res) {
     try {
         const habits = await Habit.find({user: req.user._id}).sort({frequency: 1});
-        // console.log(habits);
         res.status(200).json(habits);
     } catch (err) {
+        console.log(err)
         res.status(400).json(err);
     }
 }
@@ -21,7 +21,6 @@ async function create(req, res) {
     try {
         console.log('req.body:', req.body);
         const habit = await Habit.create({...req.body, user: req.user});
-        // console.log('habit:', habit);
         res.status(201).json(habit);
     } catch (err) {
         console.log(err)

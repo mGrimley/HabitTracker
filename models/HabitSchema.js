@@ -29,27 +29,27 @@ habitSchema.virtual('category').get(function() {
     }
 })
 
-habitSchema.virtual('startDateFormatted').get(function() {
-    const startDate = this.startDate;
-    const startDateDay = startDate.getDate();
-    const startDateMonth = startDate.getMonth();
-    const startDateYear = startDate.getFullYear();
-    const startDateDate = new Date(startDateYear, startDateMonth, startDateDay);
-    const today = new Date();
-    const todayDay = today.getDate();
-    const todayMonth = today.getMonth();
-    const todayYear = today.getFullYear();
-    const todayDate = new Date(todayYear, todayMonth, todayDay);
-    const daysSinceStart = Math.floor((todayDate - startDateDate) / (1000 * 60 * 60 * 24));
-    console.log('daysSinceStart:', daysSinceStart);
-    if (daysSinceStart === 0) {
-        return 'Today'
-    } else if (daysSinceStart === 1) {
-        return 'Yesterday'
-    } else {
-        return `${daysSinceStart} days`
-    }
-})
+// habitSchema.virtual('startDateFormatted').get(function() {
+//     const startDate = this.startDate;
+//     const startDateDay = startDate.getDate();
+//     const startDateMonth = startDate.getMonth();
+//     const startDateYear = startDate.getFullYear();
+//     const startDateDate = new Date(startDateYear, startDateMonth, startDateDay);
+//     const today = new Date();
+//     const todayDay = today.getDate();
+//     const todayMonth = today.getMonth();
+//     const todayYear = today.getFullYear();
+//     const todayDate = new Date(todayYear, todayMonth, todayDay);
+//     const daysSinceStart = Math.floor((todayDate - startDateDate) / (1000 * 60 * 60 * 24));
+//     // console.log('daysSinceStart:', daysSinceStart);
+//     if (daysSinceStart === 0) {
+//         return 'Today'
+//     } else if (daysSinceStart === 1) {
+//         return 'Yesterday'
+//     } else {
+//         return `${daysSinceStart} days`
+//     }
+// })
 
 habitSchema.virtual('nextDueDate').get(function() {
     const today = new Date();
