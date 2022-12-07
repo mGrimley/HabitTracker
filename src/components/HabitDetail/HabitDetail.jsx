@@ -44,17 +44,14 @@ export default function HabitDetail({ user }) {
             [evt.target.name]: evt.target.value,
             user: user._id
         });
-        console.log(evt.target.name, evt.target.value)
     }
 
     function handleCheckboxChange(evt) {
-        // setCompleted(evt.target.checked);
         setHabit({
             ...habit,
             [evt.target.name]: evt.target.checked,
             user: user._id
         });
-        console.log(evt.target.name, evt.target.checked)
     }
 
     return (
