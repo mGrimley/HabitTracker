@@ -24,9 +24,9 @@ CSS stlying WILL change, but here's a sneappeak
 
 Log in Page
 <img src="https://i.imgur.com/CzzppFl.png">
-<br>
+<br />
 Habit List Page
 <img src="https://i.imgur.com/cl6dgkK.png">
-<br>
+<br />
 Habit Detail Page
 <img src="https://i.imgur.com/4DA2vJx.png">
