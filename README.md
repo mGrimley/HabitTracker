@@ -20,7 +20,7 @@ A website to help you keep track of all the habits you want to reinforce and kee
 </ul>
 
 ## Screenshots
-CSS stlying WILL change, but here's a sneappeak
+CSS stlying WILL change, but here's a sneak peak
 
 Log in Page
 <img src="https://i.imgur.com/CzzppFl.png">
