@@ -29,68 +29,66 @@ habitSchema.virtual('category').get(function() {
     }
 })
 
-// habitSchema.virtual('startDateFormatted').get(function() {
-//     const startDate = this.startDate;
-//     const startDateDay = startDate.getDate();
-//     const startDateMonth = startDate.getMonth();
-//     const startDateYear = startDate.getFullYear();
-//     const startDateDate = new Date(startDateYear, startDateMonth, startDateDay);
-//     const today = new Date();
-//     const todayDay = today.getDate();
-//     const todayMonth = today.getMonth();
-//     const todayYear = today.getFullYear();
-//     const todayDate = new Date(todayYear, todayMonth, todayDay);
-//     const daysSinceStart = Math.floor((todayDate - startDateDate) / (1000 * 60 * 60 * 24));
-//     console.log('daysSinceStart:', daysSinceStart);
-//     if (daysSinceStart === 0) {
-//         return 'Today'
-//     } else if (daysSinceStart === 1) {
-//         return 'Yesterday'
-//     } else {
-//         return `${daysSinceStart} days`
-//     }
-// })
+habitSchema.virtual('startDateFormatted').get(function() {
+    const startDate = this.startDate;
+    const startDateDay = startDate.getDate();
+    const startDateMonth = startDate.getMonth();
+    const startDateYear = startDate.getFullYear();
+    const startDateDate = new Date(startDateYear, startDateMonth, startDateDay);
+    const today = new Date();
+    const todayDay = today.getDate();
+    const todayMonth = today.getMonth();
+    const todayYear = today.getFullYear();
+    const todayDate = new Date(todayYear, todayMonth, todayDay);
+    const daysSinceStart = Math.floor((todayDate - startDateDate) / (1000 * 60 * 60 * 24));
+    console.log('daysSinceStart:', daysSinceStart);
+    if (daysSinceStart === 0) {
+        return 'Created today'
+    } else if (daysSinceStart === 1) {
+        return 'Created yesterday'
+    } else {
+        return `Created ${daysSinceStart} days ago`
+    }
+})
 
-// habitSchema.virtual('nextDueDate').get(function() {
-//     return 'hello'
-//     const today = new Date();
-//     const todayDay = today.getDate();
-//     const todayMonth = today.getMonth();
-//     const todayYear = today.getFullYear();
-//     const todayDate = new Date(todayYear, todayMonth, todayDay);
-//     const habitStartDate = new Date(this.startDate);
-//     const habitStartDateDay = habitStartDate.getDate();
-//     const habitStartDateMonth = habitStartDate.getMonth();
-//     const habitStartDateYear = habitStartDate.getFullYear();
-//     const habitStartDateDate = new Date(habitStartDateYear, habitStartDateMonth, habitStartDateDay);
-//     const daysSinceStart = Math.floor((todayDate - habitStartDateDate) / (1000 * 60 * 60 * 24));
-//     const daysSinceLastDue = daysSinceStart % this.frequency;
-//     const daysUntilNextDue = this.frequency - daysSinceLastDue;
-//     // const nextDueDate = new Date(todayDate);
-//     // nextDueDate.setDate(todayDay + daysUntilNextDue);
-//     // return nextDueDate;
-//     return 'hello'
-// })
+habitSchema.virtual('nextDueDate').get(function() {
+    const today = new Date();
+    const todayDay = today.getDate();
+    const todayMonth = today.getMonth();
+    const todayYear = today.getFullYear();
+    const todayDate = new Date(todayYear, todayMonth, todayDay);
+    const habitStartDate = new Date(this.startDate);
+    const habitStartDateDay = habitStartDate.getDate();
+    const habitStartDateMonth = habitStartDate.getMonth();
+    const habitStartDateYear = habitStartDate.getFullYear();
+    const habitStartDateDate = new Date(habitStartDateYear, habitStartDateMonth, habitStartDateDay);
+    const daysSinceStart = Math.floor((todayDate - habitStartDateDate) / (1000 * 60 * 60 * 24));
+    const daysSinceLastDue = daysSinceStart % this.frequency;
+    const daysUntilNextDue = this.frequency - daysSinceLastDue;
+    const nextDueDate = new Date(todayDate);
+    nextDueDate.setDate(todayDay + daysUntilNextDue);
+    return nextDueDate;
+})
 
-// habitSchema.virtual('nextDueDateFormatted').get(function() {
-//     const nextDueDate = this.nextDueDate;
-//     const nextDueDateDay = nextDueDate.getDate();
-//     const nextDueDateMonth = nextDueDate.getMonth();
-//     const nextDueDateYear = nextDueDate.getFullYear();
-//     const nextDueDateDate = new Date(nextDueDateYear, nextDueDateMonth, nextDueDateDay);
-//     const today = new Date();
-//     const todayDay = today.getDate();
-//     const todayMonth = today.getMonth();
-//     const todayYear = today.getFullYear();
-//     const todayDate = new Date(todayYear, todayMonth, todayDay);
-//     const daysUntilNextDue = Math.floor((nextDueDateDate - todayDate) / (1000 * 60 * 60 * 24));
-//     if (daysUntilNextDue === 0) {
-//         return 'Today'
-//     } else if (daysUntilNextDue === 1) {
-//         return 'Tomorrow'
-//     } else {
-//         return `${daysUntilNextDue} days`
-//     }
-// })
+habitSchema.virtual('nextDueDateFormatted').get(function() {
+    const nextDueDate = this.nextDueDate;
+    const nextDueDateDay = nextDueDate.getDate();
+    const nextDueDateMonth = nextDueDate.getMonth();
+    const nextDueDateYear = nextDueDate.getFullYear();
+    const nextDueDateDate = new Date(nextDueDateYear, nextDueDateMonth, nextDueDateDay);
+    const today = new Date();
+    const todayDay = today.getDate();
+    const todayMonth = today.getMonth();
+    const todayYear = today.getFullYear();
+    const todayDate = new Date(todayYear, todayMonth, todayDay);
+    const daysUntilNextDue = Math.floor((nextDueDateDate - todayDate) / (1000 * 60 * 60 * 24));
+    if (daysUntilNextDue === 0) {
+        return 'Due today'
+    } else if (daysUntilNextDue === 1) {
+        return 'Due tomorrow'
+    } else {
+        return `Due in ${daysUntilNextDue} days`
+    }
+})
 
 module.exports = habitSchema;
