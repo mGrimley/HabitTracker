@@ -30,6 +30,7 @@ Habit List Page
 <br />
 Habit Detail Page
 <img src="https://i.imgur.com/4DA2vJx.png">
+![Habit Detail Page](https://i.imgur.com/4DA2vJx.png)
 
 ##### WARNING
 A lil buggy at the moment. Habit descriptions and start dates are NOT editable, but the completion status IS editable. Refresh the page after you've added your first habit. Bugfixes incoming. 
