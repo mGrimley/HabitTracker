@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import * as habitsAPI from '../../utilities/habits-api';
 
 export default function NewHabitForm({ user, habits, setHabits, newHabit, setNewHabit, setCategories }) {
@@ -20,6 +19,7 @@ export default function NewHabitForm({ user, habits, setHabits, newHabit, setNew
                 description: '',
                 frequency: 1,
                 completed: false,
+                startDate: '',
                 user: null,
             })
         } catch {
@@ -39,6 +39,7 @@ export default function NewHabitForm({ user, habits, setHabits, newHabit, setNew
         <form onSubmit={handleNewHabit}>
             <label>New Habbit</label>
             <input
+                autoComplete='off'
                 type="text"
                 name="description"
                 value={newHabit.description}
@@ -47,9 +48,19 @@ export default function NewHabitForm({ user, habits, setHabits, newHabit, setNew
 
             <label>Frequency</label>
             <input
+                autoComplete='off'
                 type="number"
                 name="frequency"
                 value={newHabit.frequency}
+                onChange={handleChange}
+            />
+
+            <label>Start Date</label>
+            <input
+                autoComplete='off'
+                type="date"
+                name="startDate"
+                value={newHabit.startDate}
                 onChange={handleChange}
             />
 

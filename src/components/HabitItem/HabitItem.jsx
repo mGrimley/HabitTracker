@@ -1,5 +1,4 @@
 import * as habitAPI from '../../utilities/habits-api';
-import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 export default function HabbitItem({ habit, habits, setHabits, setCategories }) {
@@ -14,7 +13,8 @@ export default function HabbitItem({ habit, habits, setHabits, setCategories }) 
     return (
         <li>
             <span>{habit.description}</span>
-            <button onClick={() =>  handleDeleteHabit(habit._id)}>X</button>
-        </li> 
+            <Link to={`/habits/${habit._id}`}><button>[Edit Symbol]</button></Link>
+            <button onClick={() =>  handleDeleteHabit(habit._id)}>[Trash Can]</button>
+        </li>
     );
 }
