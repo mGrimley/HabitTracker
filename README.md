@@ -10,9 +10,9 @@ A website to help you keep track of all the habits you want to reinforce and kee
 ## Technologies Used
 <ul>
     <li>JavaScript</li>
-    <li>CSS 3</li>
-    <li>Tailwind CSS</li>
-    <li>HTML5</li>
+    <li>CSS</li>
+    <li>Material UI</li>
+    <li>HTML</li>
     <li>MongoDB</li>
     <li>Express.js</li>
     <li>ReactJS</li>
