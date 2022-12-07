@@ -12,6 +12,7 @@ export default function HabbitItem({ habit, habits, setHabits, setCategories }) 
 
     return (
         <li>
+            <span>[{habit.nextDueDateFormatted}] </span>
             <span>{habit.description}</span>
             <Link to={`/habits/${habit._id}`}><button>[Edit Symbol]</button></Link>
             <button onClick={() =>  handleDeleteHabit(habit._id)}>[Trash Can]</button>
