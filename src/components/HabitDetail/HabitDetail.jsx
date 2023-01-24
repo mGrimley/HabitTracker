@@ -14,7 +14,6 @@ export default function HabitDetail({ user }) {
     // handle delete button click
 
     const [habit, setHabit] = useState(null);
-    const [completed, setCompleted] = useState(false);
     const { id } = useParams();
     
     async function getHabit() {
@@ -23,6 +22,8 @@ export default function HabitDetail({ user }) {
         setHabit(habit);
         setCompleted(habit.completed);
     }
+    
+    const [completed, setCompleted] = useState(habit.completed);
     
     useEffect (function () {
         getHabit();
